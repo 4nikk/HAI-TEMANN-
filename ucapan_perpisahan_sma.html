@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terima Kasih Teman-Teman SMA</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                        hand: ['"Caveat"', 'cursive'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#3B82F6',
+                            blueLight: '#DBEAFE',
+                            blueDark: '#1E40AF',
+                            green: '#10B981',
+                            greenLight: '#D1FAE5',
+                            greenDark: '#065F46',
+                            brown: '#78350F',
+                            brownMid: '#B45309',
+                            brownLight: '#FEF3C7',
+                            cream: '#FFFBEB',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Smooth Animations & Aesthetics */
+        body {
+            background: linear-gradient(135deg, #F8FAFC 0%, #DBEAFE 35%, #D1FAE5 70%, #FEF3C7 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Page Transition */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .page-section.active {
+            display: flex;
+        }
+
+        .page-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Tahu Tek Animations */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes steamRise {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            50% { opacity: 0.7; }
+            100% { transform: translateY(-28px) scale(1.2); opacity: 0; }
+        }
+
+        @keyframes sauceDrizzle {
+            0% { stroke-dashoffset: 300; }
+            100% { stroke-dashoffset: 0; }
+        }
+
+        @keyframes bounceSubtle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        .animate-float {
+            animation: floatSlow 3.5s ease-in-out infinite;
+        }
+
+        .steam-1 { animation: steamRise 2.6s ease-out infinite; }
+        .steam-2 { animation: steamRise 2.6s ease-out 0.8s infinite; }
+        .steam-3 { animation: steamRise 2.6s ease-out 1.6s infinite; }
+
+        .sauce-path {
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: sauceDrizzle 2.2s ease-in-out forwards 0.4s;
+        }
+
+        .kerupuk-wiggle {
+            transform-origin: center;
+            animation: bounceSubtle 2.8s ease-in-out infinite;
+        }
+
+        /* Sequential Fade In for Letter */
+        .fade-line {
+            opacity: 0;
+            transform: translateY(14px);
+            transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+        }
+
+        .fade-line.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Bouquet Pop Animation */
+        @keyframes popBloom {
+            0% { transform: scale(0) rotate(-15deg); opacity: 0; }
+            70% { transform: scale(1.08) rotate(3deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .flower-bloom {
+            transform-origin: bottom center;
+            animation: popBloom 0.65s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        /* Vinyl Spin & Equalizer */
+        @keyframes spinVinyl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .vinyl-spinning {
+            animation: spinVinyl 7s linear infinite;
+        }
+
+        @keyframes eqBar {
+            0%, 100% { height: 6px; }
+            50% { height: 22px; }
+        }
+
+        .eq-1 { animation: eqBar 0.7s ease-in-out infinite; }
+        .eq-2 { animation: eqBar 0.5s ease-in-out 0.2s infinite; }
+        .eq-3 { animation: eqBar 0.8s ease-in-out 0.1s infinite; }
+        .eq-4 { animation: eqBar 0.6s ease-in-out 0.3s infinite; }
+
+        /* Floating Petals on Farewell */
+        @keyframes petalFall {
+            0% { transform: translateY(-10vh) rotate(0deg) translateX(0); opacity: 0; }
+            15% { opacity: 0.85; }
+            85% { opacity: 0.85; }
+            100% { transform: translateY(105vh) rotate(360deg) translateX(30px); opacity: 0; }
+        }
+
+        .petal {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 0;
+            animation: petalFall linear infinite;
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 20px 40px -15px rgba(120, 53, 15, 0.12), 0 8px 20px -8px rgba(59, 130, 246, 0.1);
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-brand-greenLight selection:text-brand-greenDark flex flex-col justify-between">
+
+    <!-- Top Progress Indicator -->
+    <header class="w-full pt-5 px-4 z-20">
+        <div class="max-w-md mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md px-4 py-2.5 rounded-full shadow-sm border border-amber-900/10">
+            <span class="text-xs font-semibold text-brand-brown tracking-wide flex items-center gap-1.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-green inline-block"></span>
+                Kenangan SMA • 3 Tahun
+            </span>
+            <div class="flex items-center gap-1.5" id="progress-dots">
+                <span class="dot w-6 h-2 rounded-full bg-brand-blue transition-all duration-300"></span>
+                <span class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></span>
+                <span class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></span>
+                <span class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></span>
+                <span class="dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow flex items-center justify-center px-4 py-6 z-10">
+
+        <!-- ========================================== -->
+        <!-- HALAMAN 1: ANIMASI TAHU TEK & SAMBUTAN     -->
+        <!-- ========================================== -->
+        <section id="page-1" class="page-section active visible w-full max-w-lg flex-col items-center text-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 w-full relative overflow-hidden">
+                <!-- Decorative Color Blobs -->
+                <div class="absolute -top-12 -left-12 w-36 h-36 bg-brand-blueLight rounded-full opacity-60 blur-xl pointer-events-none"></div>
+                <div class="absolute -bottom-12 -right-12 w-36 h-36 bg-brand-greenLight rounded-full opacity-60 blur-xl pointer-events-none"></div>
+
+                <span class="inline-block px-3.5 py-1 rounded-full bg-brand-brownLight text-brand-brown text-xs font-bold tracking-wider uppercase mb-3 border border-amber-300/60">
+                    Spesial Buat Kamu ✨
+                </span>
+
+                <h1 class="font-serif text-2xl sm:text-3xl font-bold text-brand-brown mb-2">
+                    Sepiring Tahu Tek Dulu Yuk!
+                </h1>
+                <p class="text-sm sm:text-base text-slate-600 mb-5">
+                    Sebelum baca sesuatu yang penting, nikmatin dulu animasi tahu tek hangat khas kita~
+                </p>
+
+                <!-- Custom Animated Tahu Tek SVG Illustration -->
+                <div class="relative w-full max-w-[310px] mx-auto my-2 animate-float">
+                    <svg viewBox="0 0 340 250" class="w-full h-auto drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Steam Lines -->
+                        <path class="steam-1" d="M125 65 Q118 50 128 38 Q136 26 126 15" fill="none" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+                        <path class="steam-2" d="M170 58 Q162 42 172 30 Q180 18 170 8" fill="none" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+                        <path class="steam-3" d="M215 65 Q208 50 218 38 Q226 26 216 15" fill="none" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+
+                        <!-- Plate Shadow -->
+                        <ellipse cx="170" cy="212" rx="135" ry="22" fill="#78350F" opacity="0.14"/>
+
+                        <!-- Ceramic Plate (White & Blue Rim) -->
+                        <ellipse cx="170" cy="192" rx="142" ry="36" fill="#FFFFFF" stroke="#3B82F6" stroke-width="4"/>
+                        <ellipse cx="170" cy="190" rx="124" ry="28" fill="#F8FAFC" stroke="#93C5FD" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+                        <!-- Lontong (Rice Cakes wrapped in banana leaf tint) -->
+                        <g transform="translate(88, 158)">
+                            <ellipse cx="22" cy="16" rx="22" ry="11" fill="#A7F3D0" stroke="#059669" stroke-width="2"/>
+                            <ellipse cx="22" cy="13" rx="19" ry="8.5" fill="#F8FAFC"/>
+                            <ellipse cx="48" cy="21" rx="22" ry="11" fill="#A7F3D0" stroke="#059669" stroke-width="2"/>
+                            <ellipse cx="48" cy="18" rx="19" ry="8.5" fill="#F8FAFC"/>
+                        </g>
+
+                        <!-- Kentang Goreng (Fried Potato Cubes) -->
+                        <g fill="#FDE68A" stroke="#D97706" stroke-width="2">
+                            <rect x="178" y="160" width="26" height="20" rx="5" transform="rotate(-8 178 160)"/>
+                            <rect x="202" y="166" width="25" height="19" rx="5" transform="rotate(10 202 166)"/>
+                            <rect x="155" y="170" width="24" height="18" rx="5"/>
+                        </g>
+
+                        <!-- Tahu Goreng (Golden Fried Tofu Cubes) -->
+                        <g>
+                            <!-- Tofu 1 -->
+                            <rect x="115" y="135" width="32" height="26" rx="5" fill="#F59E0B" stroke="#92400E" stroke-width="2" transform="rotate(-6 115 135)"/>
+                            <rect x="119" y="139" width="24" height="18" rx="3" fill="#FBBF24" transform="rotate(-6 115 135)"/>
+                            <!-- Tofu 2 -->
+                            <rect x="152" y="132" width="34" height="27" rx="5" fill="#D97706" stroke="#78350F" stroke-width="2" transform="rotate(5 152 132)"/>
+                            <rect x="156" y="136" width="26" height="19" rx="3" fill="#F59E0B" transform="rotate(5 152 132)"/>
+                            <!-- Tofu 3 -->
+                            <rect x="184" y="140" width="30" height="24" rx="5" fill="#F59E0B" stroke="#92400E" stroke-width="2" transform="rotate(12 184 140)"/>
+                        </g>
+
+                        <!-- Bumbu Kacang Petis (Rich Warm Brown Peanut Sauce Drizzle) -->
+                        <path d="M98 166 C115 148, 145 144, 172 146 C200 148, 228 154, 240 170 C248 181, 222 192, 172 192 C122 192, 88 180, 98 166 Z" fill="#78350F" opacity="0.92"/>
+                        <!-- Animated Glossy Sauce Swirl -->
+                        <path class="sauce-path" d="M112 165 Q135 152 155 164 T195 162 T226 172" fill="none" stroke="#B45309" stroke-width="6" stroke-linecap="round"/>
+                        <path class="sauce-path" d="M122 175 Q150 166 175 176 T214 175" fill="none" stroke="#451A03" stroke-width="4" stroke-linecap="round"/>
+
+                        <!-- Tauge (Fresh Bean Sprouts) & Seledri (Green Celery Garnish) -->
+                        <g stroke="#FEF3C7" stroke-width="3" stroke-linecap="round" fill="none">
+                            <path d="M135 148 Q145 135 156 144"/>
+                            <path d="M162 145 Q174 132 185 143"/>
+                            <path d="M148 156 Q160 146 170 155"/>
+                            <path d="M178 154 Q190 144 200 154"/>
+                        </g>
+                        <!-- Green Celery / Cucumber Slices -->
+                        <circle cx="105" cy="176" r="11" fill="#10B981" stroke="#065F46" stroke-width="2"/>
+                        <circle cx="105" cy="176" r="7" fill="#D1FAE5"/>
+                        <circle cx="235" cy="176" r="11" fill="#10B981" stroke="#065F46" stroke-width="2"/>
+                        <circle cx="235" cy="176" r="7" fill="#D1FAE5"/>
+
+                        <!-- Leafy Celery Top -->
+                        <path d="M165 134 C160 124, 170 120, 173 130 C178 120, 186 125, 178 134 Z" fill="#10B981" stroke="#065F46" stroke-width="1.5"/>
+
+                        <!-- Kerupuk Udang / Kampung (Crispy Crackers on Top) -->
+                        <g class="kerupuk-wiggle">
+                            <!-- Left Cracker -->
+                            <path d="M115 118 C102 102, 128 84, 148 96 C164 106, 152 128, 134 128 C122 128, 120 124, 115 118 Z" fill="#FEF3C7" stroke="#D97706" stroke-width="2.5"/>
+                            <path d="M122 112 C118 104, 132 96, 142 103" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                            <!-- Right Cracker -->
+                            <path d="M185 116 C180 98, 206 86, 222 100 C236 112, 220 130, 202 128 C192 127, 188 122, 185 116 Z" fill="#FFFBEB" stroke="#B45309" stroke-width="2.5"/>
+                            <path d="M194 111 C194 103, 208 98, 214 106" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+                        </g>
+
+                        <!-- Bawang Goreng (Crispy Fried Shallots) -->
+                        <g fill="#78350F">
+                            <ellipse cx="145" cy="152" rx="3" ry="1.5" transform="rotate(20 145 152)"/>
+                            <ellipse cx="168" cy="150" rx="3.5" ry="1.5" transform="rotate(-15 168 150)"/>
+                            <ellipse cx="190" cy="155" rx="3" ry="1.5" transform="rotate(30 190 155)"/>
+                            <ellipse cx="158" cy="164" rx="3" ry="1.5"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="mt-4">
+                    <button onclick="goToPage(2)" class="w-full sm:w-auto px-8 py-3.5 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-green text-white font-semibold shadow-lg shadow-blue-500/25 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center justify-center gap-2 mx-auto cursor-pointer">
+                        <span>Buka Pesan Untukmu</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- HALAMAN 2: UCAPAN DENGAN ANIMASI PUDAR     -->
+        <!-- ========================================== -->
+        <section id="page-2" class="page-section w-full max-w-xl flex-col items-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 w-full border-t-4 border-t-brand-brownMid relative">
+                <!-- Decorative Header Icon -->
+                <div class="flex items-center justify-between mb-6 pb-4 border-b border-amber-900/10">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-brand-brownLight text-brand-brown flex items-center justify-center font-bold shadow-inner">
+                            ✉️
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xs font-semibold text-brand-greenDark uppercase tracking-wider">Catatan Kecil</p>
+                            <p class="text-sm font-medium text-brand-brown">3 Tahun Putih Abu-Abu</p>
+                        </div>
+                    </div>
+                    <button onclick="replayLetterAnimation()" class="text-xs px-3 py-1.5 rounded-lg bg-brand-blueLight/70 text-brand-blueDark hover:bg-brand-blueLight transition font-medium cursor-pointer" title="Putar ulang animasi teks">
+                        ↻ Ulang Teks
+                    </button>
+                </div>
+
+                <!-- Letter Content with Sequential Fade-In -->
+                <div id="letter-container" class="space-y-4 text-left leading-relaxed text-slate-700 text-base sm:text-lg">
+                    <h2 class="fade-line font-serif text-2xl sm:text-3xl font-bold text-brand-brown tracking-wide">
+                        HALO TEMAN-TEMAN
+                    </h2>
+
+                    <p class="fade-line">
+                        terima kasih sudah menjadi temanku selama <span class="font-semibold text-brand-blueDark bg-brand-blueLight/60 px-1.5 py-0.5 rounded">3 tahun ku di SMA ini</span>, maaf kalau aku banyak salah ke kamu, dan juga maaf kalau aku banyak merepotkan kamu..
+                    </p>
+
+                    <p class="fade-line">
+                        masih ada beberapa bulan lagi buat aku terakhir kali ngerepotin kamu, tapi ya <span class="italic font-medium text-brand-brownMid">who knows?</span> bisa aja kamu bakalan aku panggil buat hal lain ketika aku dewasa nanti.
+                    </p>
+
+                    <p class="fade-line">
+                        kalau aku punya hutang atau salah ke kamu bilang aja ya.. <span class="font-medium text-brand-greenDark bg-brand-greenLight/70 px-1.5 py-0.5 rounded">aku pelupa:(</span>
+                    </p>
+
+                    <p class="fade-line font-semibold text-brand-brown pt-1">
+                        sekali lagi aku berterima kasih banyakk banget hehe
+                    </p>
+                </div>
+
+                <!-- Next Button -->
+                <div id="page-2-next" class="fade-line mt-8 pt-5 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-3">
+                    <span class="text-xs text-slate-500">Ada hadiah kecil buatmu di halaman berikutnya!</span>
+                    <button onclick="goToPage(3)" class="w-full sm:w-auto px-7 py-3 rounded-2xl bg-brand-brown text-white font-semibold shadow-md shadow-amber-900/20 hover:bg-brand-brownMid hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 cursor-pointer">
+                        <span>Lanjut ke Game 1</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- HALAMAN 3: GAME BUKET BUNGA DARI NAMA      -->
+        <!-- ========================================== -->
+        <section id="page-3" class="page-section w-full max-w-xl flex-col items-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 w-full">
+                <div class="text-center mb-5">
+                    <span class="inline-block px-3 py-1 rounded-full bg-brand-greenLight text-brand-greenDark text-xs font-bold mb-2">
+                        MINI GAME 1 • FLORIST NAMA
+                    </span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-brown">
+                        Buket Bunga Namamu 💐
+                    </h2>
+                </div>
+
+                <!-- Tata Cara Penggunaan -->
+                <div class="bg-brand-blueLight/50 border border-brand-blue/25 rounded-2xl p-4 mb-5 text-left">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-brand-blueDark mb-1.5 flex items-center gap-1.5">
+                        <span>📖</span> Tata Cara Penggunaan:
+                    </h3>
+                    <ol class="text-xs sm:text-sm text-slate-700 space-y-1 list-decimal list-inside">
+                        <li>Ketik <strong>nama panggilan atau nama lengkapmu</strong> pada kolom di bawah.</li>
+                        <li>Tekan tombol <strong>Enter</strong> di keyboard atau klik tombol <strong>"Rangkai Buket"</strong>.</li>
+                        <li>Setiap huruf namamu akan dirangkai menjadi jenis bunga cantik & warna kertas <em>wrapping</em> yang unik!</li>
+                    </ol>
+                </div>
+
+                <!-- Input Form -->
+                <form onsubmit="handleBouquetSubmit(event)" class="flex flex-col sm:flex-row gap-2.5 mb-4">
+                    <input 
+                        type="text" 
+                        id="bouquet-name-input" 
+                        placeholder="Ketik namamu di sini... (cth: Aisyah / Budi)" 
+                        maxlength="24"
+                        required
+                        class="flex-grow px-4 py-3.5 rounded-xl bg-white border-2 border-brand-brown/20 focus:border-brand-green focus:outline-none text-slate-800 font-medium placeholder:text-slate-400 transition"
+                    >
+                    <button type="submit" class="px-6 py-3.5 rounded-xl bg-brand-green text-white font-semibold shadow-md shadow-emerald-600/20 hover:bg-emerald-600 active:scale-[0.98] transition cursor-pointer whitespace-nowrap">
+                        Rangkai Buket 🌸
+                    </button>
+                </form>
+
+                <!-- Error / Validation Toast Message -->
+                <p id="bouquet-error" class="hidden text-xs text-red-600 font-medium mb-3 text-center"></p>
+
+                <!-- Result Area -->
+                <div id="bouquet-result" class="hidden flex-col items-center bg-gradient-to-b from-white/90 to-brand-cream/90 rounded-2xl p-5 border border-amber-900/15 shadow-inner mt-2">
+                    <div class="flex flex-wrap items-center justify-center gap-2 mb-2">
+                        <span id="wrap-badge" class="text-xs font-semibold px-3 py-1 rounded-full bg-brand-brownLight text-brand-brown">
+                            Wrapping: Kraft Cokelat
+                        </span>
+                        <span id="flower-count-badge" class="text-xs font-semibold px-3 py-1 rounded-full bg-brand-blueLight text-brand-blueDark">
+                            6 Tangkai Bunga
+                        </span>
+                    </div>
+
+                    <!-- Dynamic SVG Bouquet Container -->
+                    <div id="bouquet-svg-container" class="w-full max-w-[300px] my-1"></div>
+
+                    <!-- Flower Legend / Breakdown -->
+                    <div class="w-full mt-3 pt-3 border-t border-amber-900/10 text-center">
+                        <p class="text-xs font-semibold text-slate-500 mb-2">Komposisi Bunga dari Huruf Namamu:</p>
+                        <div id="flower-tags" class="flex flex-wrap justify-center gap-1.5"></div>
+                    </div>
+                </div>
+
+                <!-- Navigation Footer -->
+                <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                    <button onclick="goToPage(2)" class="text-xs sm:text-sm text-slate-500 hover:text-brand-brown font-medium px-3 py-2 rounded-lg transition cursor-pointer">
+                        ← Kembali
+                    </button>
+                    <button onclick="goToPage(4)" class="px-6 py-3 rounded-2xl bg-gradient-to-r from-brand-blue to-brand-green text-white font-semibold shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition flex items-center gap-2 cursor-pointer">
+                        <span>Lanjut ke Game 2</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- HALAMAN 4: GAME LAGU & SAMPUL DARI NAMA    -->
+        <!-- ========================================== -->
+        <section id="page-4" class="page-section w-full max-w-xl flex-col items-center">
+            <div class="glass-card rounded-3xl p-6 sm:p-8 w-full">
+                <div class="text-center mb-5">
+                    <span class="inline-block px-3 py-1 rounded-full bg-brand-blueLight text-brand-blueDark text-xs font-bold mb-2">
+                        MINI GAME 2 • SOUNDTRACK NAMA
+                    </span>
+                    <h2 class="font-serif text-2xl sm:text-3xl font-bold text-brand-brown">
+                        Lagu Untuk Namamu 🎧
+                    </h2>
+                </div>
+
+                <!-- Tata Cara Penggunaan -->
+                <div class="bg-brand-greenLight/50 border border-brand-green/25 rounded-2xl p-4 mb-5 text-left">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-brand-greenDark mb-1.5 flex items-center gap-1.5">
+                        <span>🎵</span> Tata Cara Penggunaan:
+                    </h3>
+                    <ol class="text-xs sm:text-sm text-slate-700 space-y-1 list-decimal list-inside">
+                        <li>Masukkan <strong>namamu</strong> di kotak bawah (bisa nama yang sama atau variasi panggilanmu).</li>
+                        <li>Tekan <strong>Enter</strong> atau klik tombol <strong>"Cari Laguku"</strong>.</li>
+                        <li>Sistem akan mencocokkan energi namamu dengan judul lagu ternama/terbaru beserta desain sampul albumnya!</li>
+                    </ol>
+                </div>
+
+                <!-- Input Form -->
+                <form onsubmit="handleSongSubmit(event)" class="flex flex-col sm:flex-row gap-2.5 mb-4">
+                    <input 
+                        type="text" 
+                        id="song-name-input" 
+                        placeholder="Ketik namamu di sini..." 
+                        maxlength="24"
+                        required
+                        class="flex-grow px-4 py-3.5 rounded-xl bg-white border-2 border-brand-brown/20 focus:border-brand-blue focus:outline-none text-slate-800 font-medium placeholder:text-slate-400 transition"
+                    >
+                    <button type="submit" class="px-6 py-3.5 rounded-xl bg-brand-blue text-white font-semibold shadow-md shadow-blue-600/20 hover:bg-blue-600 active:scale-[0.98] transition cursor-pointer whitespace-nowrap">
+                        Cari Laguku 🎶
+                    </button>
+                </form>
+
+                <p id="song-error" class="hidden text-xs text-red-600 font-medium mb-3 text-center"></p>
+
+                <!-- Song Result Card -->
+                <div id="song-result" class="hidden flex-col items-center bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950 text-white rounded-2xl p-5 sm:p-6 shadow-xl mt-2 relative overflow-hidden">
+                    <!-- Subtle Glow -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-brand-blue/30 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-brand-green/30 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <div class="w-full flex items-center justify-between text-xs text-slate-300 mb-4 z-10">
+                        <span class="px-2.5 py-0.5 rounded-full bg-white/10 font-medium" id="song-user-badge">Untuk: Kamu</span>
+                        <div class="flex items-end gap-1 h-5" aria-hidden="true">
+                            <span class="w-1 bg-brand-green rounded-full eq-1"></span>
+                            <span class="w-1 bg-brand-blue rounded-full eq-2"></span>
+                            <span class="w-1 bg-amber-400 rounded-full eq-3"></span>
+                            <span class="w-1 bg-brand-green rounded-full eq-4"></span>
+                        </div>
+                    </div>
+
+                    <!-- Album Cover + Spinning Vinyl -->
+                    <div class="relative flex items-center justify-center my-2 z-10">
+                        <!-- Vinyl Disc peeking out -->
+                        <div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-neutral-950 border-4 border-neutral-800 shadow-lg flex items-center justify-center -mr-14 vinyl-spinning">
+                            <div class="w-24 h-24 rounded-full border border-neutral-700/70 flex items-center justify-center">
+                                <div class="w-12 h-12 rounded-full bg-amber-600/80 border-2 border-white/40 flex items-center justify-center">
+                                    <div class="w-3 h-3 rounded-full bg-neutral-900"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Custom Album Cover Art -->
+                        <div id="album-cover-art" class="w-36 h-36 sm:w-40 sm:h-40 rounded-xl shadow-2xl overflow-hidden border-2 border-white/20 relative z-10 flex-shrink-0">
+                            <!-- Injected SVG Cover -->
+                        </div>
+                    </div>
+
+                    <!-- Song Title & Artist -->
+                    <div class="text-center mt-4 z-10">
+                        <span id="song-year-tag" class="text-[11px] uppercase tracking-widest text-emerald-300 font-bold">TOP HITS</span>
+                        <h3 id="song-title" class="font-serif text-xl sm:text-2xl font-bold text-white mt-0.5">
+                            Judul Lagu
+                        </h3>
+                        <p id="song-artist" class="text-sm text-blue-200 font-medium mt-0.5">
+                            Nama Penyanyi
+                        </p>
+                        <p id="song-vibe" class="text-xs text-amber-100/90 bg-white/10 rounded-xl px-4 py-2.5 mt-3 max-w-sm mx-auto leading-relaxed">
+                            "Alasan lagu ini cocok buat kamu."
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Navigation Footer -->
+                <div class="mt-6 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                    <button onclick="goToPage(3)" class="text-xs sm:text-sm text-slate-500 hover:text-brand-brown font-medium px-3 py-2 rounded-lg transition cursor-pointer">
+                        ← Kembali
+                    </button>
+                    <button onclick="goToPage(5)" class="px-6 py-3 rounded-2xl bg-brand-brown text-white font-semibold shadow-md hover:bg-brand-brownMid hover:scale-[1.02] active:scale-[0.98] transition flex items-center gap-2 cursor-pointer">
+                        <span>Halaman Terakhir</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- HALAMAN 5: PENUTUP / FAREWELL              -->
+        <!-- ========================================== -->
+        <section id="page-5" class="page-section w-full max-w-lg flex-col items-center text-center">
+            <div id="petals-container" class="pointer-events-none"></div>
+
+            <div class="glass-card rounded-3xl p-8 sm:p-12 w-full relative overflow-hidden border-2 border-white">
+                <div class="w-20 h-20 mx-auto mb-5 rounded-full bg-gradient-to-tr from-brand-blueLight via-brand-greenLight to-brand-brownLight flex items-center justify-center shadow-inner text-4xl animate-float">
+                    🎓
+                </div>
+
+                <h1 class="font-serif text-3xl sm:text-4xl font-bold text-brand-brown leading-snug mb-4">
+                    bye-bye teman, terima kasih
+                </h1>
+
+                <p class="text-sm sm:text-base text-slate-600 max-w-sm mx-auto mb-8 leading-relaxed">
+                    Semoga sukses terus di jalan yang kamu pilih setelah SMA ini. Sampai ketemu lagi di versi terbaik kita masing-masing!
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button onclick="goToPage(1)" class="px-6 py-3 rounded-2xl bg-white border-2 border-brand-brown/20 text-brand-brown font-semibold hover:bg-brand-brownLight/50 transition cursor-pointer text-sm">
+                        ↺ Ulangi dari Awal
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Subtle Footer -->
+    <footer class="w-full py-4 text-center text-xs text-slate-500/80 z-10">
+        Dibuat dengan penuh kenangan • Putih Abu-Abu
+    </footer>
+
+    <!-- Application Logic -->
+    <script>
+        let currentPage = 1;
+        let savedUserName = '';
+        let letterTimers = [];
+
+        // ==========================================
+        // NAVIGATION & PAGE TRANSITIONS
+        // ==========================================
+        function goToPage(pageNum) {
+            const oldSection = document.getElementById(`page-${currentPage}`);
+            const newSection = document.getElementById(`page-${pageNum}`);
+
+            if (!newSection || pageNum === currentPage) return;
+
+            // Fade out current page
+            oldSection.classList.remove('visible');
+
+            setTimeout(() => {
+                oldSection.classList.remove('active');
+                newSection.classList.add('active');
+
+                // Trigger reflow for smooth transition
+                void newSection.offsetWidth;
+                newSection.classList.add('visible');
+
+                currentPage = pageNum;
+                updateProgressDots(pageNum);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Page-specific initializations
+                if (pageNum === 2) {
+                    startLetterFadeAnimation();
+                } else if (pageNum === 4) {
+                    // Pre-fill name if user already typed it in Page 3
+                    const songInput = document.getElementById('song-name-input');
+                    if (savedUserName && !songInput.value) {
+                        songInput.value = savedUserName;
+                    }
+                } else if (pageNum === 5) {
+                    spawnFarewellPetals();
+                }
+            }, 300);
+        }
+
+        function updateProgressDots(activePage) {
+            const dots = document.querySelectorAll('#progress-dots .dot');
+            dots.forEach((dot, idx) => {
+                if (idx + 1 === activePage) {
+                    dot.className = 'dot w-6 h-2 rounded-full bg-brand-blue transition-all duration-300';
+                } else if (idx + 1 < activePage) {
+                    dot.className = 'dot w-2 h-2 rounded-full bg-brand-green transition-all duration-300';
+                } else {
+                    dot.className = 'dot w-2 h-2 rounded-full bg-slate-300 transition-all duration-300';
+                }
+            });
+        }
+
+        // ==========================================
+        // PAGE 2: SEQUENTIAL FADE-IN LETTER
+        // ==========================================
+        function startLetterFadeAnimation() {
+            // Clear existing timers
+            letterTimers.forEach(t => clearTimeout(t));
+            letterTimers = [];
+
+            const lines = document.querySelectorAll('#page-2 .fade-line');
+            lines.forEach(line => line.classList.remove('show'));
+
+            lines.forEach((line, index) => {
+                const timer = setTimeout(() => {
+                    line.classList.add('show');
+                }, 350 + (index * 950));
+                letterTimers.push(timer);
+            });
+        }
+
+        function replayLetterAnimation() {
+            startLetterFadeAnimation();
+        }
+
+        // ==========================================
+        // PAGE 3: NAME TO FLOWER BOUQUET GENERATOR
+        // ==========================================
+        const FLOWER_TYPES = [
+            { id: 'rose', name: 'Mawar Biru', color: '#3B82F6', center: '#1E3A8A', petalLight: '#93C5FD' },
+            { id: 'sunflower', name: 'Bunga Matahari', color: '#F59E0B', center: '#78350F', petalLight: '#FDE68A' },
+            { id: 'tulip', name: 'Tulip Hijau Mint', color: '#10B981', center: '#065F46', petalLight: '#A7F3D0' },
+            { id: 'daisy', name: 'Daisy Putih', color: '#FFFFFF', center: '#D97706', petalLight: '#E2E8F0' },
+            { id: 'peony', name: 'Peony Coral', color: '#FB7185', center: '#9F1239', petalLight: '#FECDD3' },
+            { id: 'lavender', name: 'Lavender Ungu', color: '#8B5CF6', center: '#4C1D95', petalLight: '#DDD6FE' },
+            { id: 'lily', name: 'Lily Krem', color: '#FEF3C7', center: '#B45309', petalLight: '#FDE68A' },
+            { id: 'hydrangea', name: 'Hydrangea Langit', color: '#0EA5E9', center: '#0369A1', petalLight: '#BAE6FD' }
+        ];
+
+        const WRAPPING_STYLES = [
+            { name: 'Kraft Cokelat Hangat', back: '#92400E', front: '#B45309', inner: '#FEF3C7', ribbon: '#10B981' },
+            { name: 'Biru Langit Pastel', back: '#2563EB', front: '#60A5FA', inner: '#DBEAFE', ribbon: '#78350F' },
+            { name: 'Hijau Sage Elegan', back: '#059669', front: '#34D399', inner: '#D1FAE5', ribbon: '#B45309' },
+            { name: 'Putih Linen Klasik', back: '#CBD5E1', front: '#F8FAFC', inner: '#EFF6FF', ribbon: '#3B82F6' },
+            { name: 'Cokelat Kopi Susu', back: '#78350F', front: '#D97706', inner: '#FFFBEB', ribbon: '#3B82F6' },
+            { name: 'Tosca Daun Muda', back: '#0D9488', front: '#2DD4BF', inner: '#CCFBF1', ribbon: '#78350F' }
+        ];
+
+        function hashString(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                hash |= 0;
+            }
+            return Math.abs(hash);
+        }
+
+        function handleBouquetSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('bouquet-name-input');
+            const errorEl = document.getElementById('bouquet-error');
+            const rawName = input.value.trim();
+
+            if (!rawName) {
+                errorEl.textContent = 'Yuk ketik namamu terlebih dahulu!';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            errorEl.classList.add('hidden');
+            savedUserName = rawName;
+            generateBouquet(rawName);
+        }
+
+        function renderSingleFlowerSVG(flower, x, y, scale, delaySec) {
+            const s = scale;
+            let headSvg = '';
+
+            if (flower.id === 'sunflower' || flower.id === 'daisy') {
+                // Multi-petal radial flower
+                let petals = '';
+                for (let a = 0; a < 360; a += 30) {
+                    petals += `<ellipse cx="0" cy="-16" rx="5.5" ry="13" fill="${flower.color}" stroke="${flower.petalLight}" stroke-width="1" transform="rotate(${a})"/>`;
+                }
+                headSvg = `
+                    ${petals}
+                    <circle cx="0" cy="0" r="9" fill="${flower.center}"/>
+                    <circle cx="-2" cy="-2" r="3" fill="#FFF" opacity="0.25"/>
+                `;
+            } else if (flower.id === 'tulip') {
+                headSvg = `
+                    <path d="M-14 4 C-16 -14, -4 -22, 0 -10 C4 -22, 16 -14, 14 4 C14 14, -14 14, -14 4 Z" fill="${flower.color}" stroke="${flower.center}" stroke-width="1.5"/>
+                    <path d="M-7 4 C-8 -10, 0 -18, 0 -6 C0 -18, 8 -10, 7 4 Z" fill="${flower.petalLight}" opacity="0.6"/>
+                `;
+            } else if (flower.id === 'lavender') {
+                headSvg = `
+                    <ellipse cx="0" cy="-22" rx="5" ry="6" fill="${flower.color}"/>
+                    <ellipse cx="-6" cy="-14" rx="5.5" ry="5" fill="${flower.petalLight}"/>
+                    <ellipse cx="6" cy="-14" rx="5.5" ry="5" fill="${flower.color}"/>
+                    <ellipse cx="-7" cy="-5" rx="6" ry="5" fill="${flower.color}"/>
+                    <ellipse cx="7" cy="-5" rx="6" ry="5" fill="${flower.petalLight}"/>
+                    <ellipse cx="0" cy="3" rx="6" ry="5" fill="${flower.center}"/>
+                `;
+            } else {
+                // Layered Rose / Peony / Hydrangea / Lily
+                headSvg = `
+                    <circle cx="-9" cy="-6" r="11" fill="${flower.color}"/>
+                    <circle cx="9" cy="-6" r="11" fill="${flower.color}"/>
+                    <circle cx="-7" cy="7" r="11" fill="${flower.petalLight}"/>
+                    <circle cx="7" cy="7" r="11" fill="${flower.petalLight}"/>
+                    <circle cx="0" cy="-11" r="11" fill="${flower.color}"/>
+                    <circle cx="0" cy="0" r="10" fill="${flower.petalLight}" stroke="${flower.color}" stroke-width="2"/>
+                    <circle cx="0" cy="0" r="4.5" fill="${flower.center}"/>
+                `;
+            }
+
+            return `
+                <g transform="translate(${x}, ${y}) scale(${s})">
+                    <g class="flower-bloom" style="animation-delay: ${delaySec}s">
+                        ${headSvg}
+                    </g>
+                </g>
+            `;
+        }
+
+        function generateBouquet(name) {
+            const cleanLetters = name.replace(/[^a-zA-Z]/g, '').toUpperCase();
+            const sourceChars = cleanLetters.length > 0 ? cleanLetters : name.toUpperCase();
+            const nameHash = hashString(name.toLowerCase());
+
+            // Pick wrapping style based on hash & length
+            const wrap = WRAPPING_STYLES[(nameHash + name.length) % WRAPPING_STYLES.length];
+
+            // Map up to 9 flowers from the letters of the name
+            const maxFlowers = Math.min(Math.max(sourceChars.length, 3), 9);
+            const selectedFlowers = [];
+            const uniqueFlowerMap = new Map();
+
+            for (let i = 0; i < maxFlowers; i++) {
+                const charCode = sourceChars.charCodeAt(i % sourceChars.length);
+                const flowerObj = FLOWER_TYPES[(charCode + i) % FLOWER_TYPES.length];
+                selectedFlowers.push(flowerObj);
+                uniqueFlowerMap.set(flowerObj.name, flowerObj);
+            }
+
+            // Pre-defined aesthetic bouquet coordinates (layered back to front)
+            const positions = [
+                { x: 150, y: 82, s: 1.05 },
+                { x: 112, y: 95, s: 0.98 },
+                { x: 188, y: 95, s: 0.98 },
+                { x: 132, y: 118, s: 1.08 },
+                { x: 168, y: 118, s: 1.08 },
+                { x: 95,  y: 122, s: 0.92 },
+                { x: 205, y: 122, s: 0.92 },
+                { x: 150, y: 138, s: 1.12 },
+                { x: 122, y: 142, s: 0.95 }
+            ];
+
+            // Build Stems & Leaves
+            let stemsSvg = '';
+            let flowersSvg = '';
+
+            selectedFlowers.forEach((flower, idx) => {
+                const pos = positions[idx];
+                stemsSvg += `<line x1="${pos.x}" y1="${pos.y}" x2="150" y2="235" stroke="#059669" stroke-width="4" stroke-linecap="round"/>`;
+                flowersSvg += renderSingleFlowerSVG(flower, pos.x, pos.y, pos.s, idx * 0.08);
+            });
+
+            const safeDisplayName = name.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+            const fullSvg = `
+                <svg viewBox="0 0 300 310" class="w-full h-auto drop-shadow-md" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Back Wrapping Paper Cone -->
+                    <polygon points="150,42 62,135 150,285 238,135" fill="${wrap.back}" stroke="#78350F" stroke-width="1.5" stroke-linejoin="round"/>
+                    <polygon points="150,54 74,138 150,275 226,138" fill="${wrap.inner}"/>
+
+                    <!-- Lush Foliage Leaves -->
+                    <ellipse cx="95" cy="115" rx="22" ry="10" fill="#10B981" transform="rotate(-35 95 115)"/>
+                    <ellipse cx="205" cy="115" rx="22" ry="10" fill="#10B981" transform="rotate(35 205 115)"/>
+                    <ellipse cx="120" cy="82" rx="20" ry="9" fill="#059669" transform="rotate(-20 120 82)"/>
+                    <ellipse cx="180" cy="82" rx="20" ry="9" fill="#059669" transform="rotate(20 180 82)"/>
+
+                    <!-- Stems -->
+                    ${stemsSvg}
+
+                    <!-- Flowers -->
+                    ${flowersSvg}
+
+                    <!-- Front Wrapping Paper Fold (Left & Right) -->
+                    <polygon points="62,135 150,185 150,288" fill="${wrap.front}" opacity="0.95" stroke="#78350F" stroke-width="1.2" stroke-linejoin="round"/>
+                    <polygon points="238,135 150,185 150,288" fill="${wrap.back}" opacity="0.92" stroke="#78350F" stroke-width="1.2" stroke-linejoin="round"/>
+
+                    <!-- Silk Ribbon Tie -->
+                    <path d="M122 212 Q150 224 178 212" fill="none" stroke="${wrap.ribbon}" stroke-width="8" stroke-linecap="round"/>
+                    <!-- Ribbon Bow Loops -->
+                    <path d="M150 216 C125 198, 115 224, 146 218" fill="${wrap.ribbon}"/>
+                    <path d="M150 216 C175 198, 185 224, 154 218" fill="${wrap.ribbon}"/>
+                    <!-- Ribbon Tails -->
+                    <path d="M148 218 L132 252" stroke="${wrap.ribbon}" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M152 218 L168 252" stroke="${wrap.ribbon}" stroke-width="6" stroke-linecap="round"/>
+                    <circle cx="150" cy="217" r="6" fill="#FFFBEB" stroke="${wrap.ribbon}" stroke-width="2.5"/>
+
+                    <!-- Name Card Tag Hanging on Bouquet -->
+                    <g transform="translate(166, 224) rotate(8)">
+                        <rect x="0" y="0" width="84" height="32" rx="6" fill="#FFFFFF" stroke="#78350F" stroke-width="1.5"/>
+                        <circle cx="8" cy="16" r="2.5" fill="#B45309"/>
+                        <text x="45" y="14" font-family="Plus Jakarta Sans, sans-serif" font-size="7" fill="#64748B" text-anchor="middle">Untuk:</text>
+                        <text x="45" y="25" font-family="Caveat, cursive" font-size="13" font-weight="bold" fill="#78350F" text-anchor="middle">${safeDisplayName.slice(0, 12)}</text>
+                    </g>
+                </svg>
+            `;
+
+            document.getElementById('bouquet-svg-container').innerHTML = fullSvg;
+            document.getElementById('wrap-badge').textContent = `Wrapping: ${wrap.name}`;
+            document.getElementById('flower-count-badge').textContent = `${selectedFlowers.length} Tangkai Bunga`;
+
+            // Render Flower Legend Tags
+            const tagsContainer = document.getElementById('flower-tags');
+            tagsContainer.innerHTML = '';
+            uniqueFlowerMap.forEach((f) => {
+                const badge = document.createElement('span');
+                badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-white border border-slate-200 text-slate-700 shadow-2xs';
+                badge.innerHTML = `<span class="w-2.5 h-2.5 rounded-full border border-slate-300" style="background:${f.color}"></span>${f.name}`;
+                tagsContainer.appendChild(badge);
+            });
+
+            const resultBox = document.getElementById('bouquet-result');
+            resultBox.classList.remove('hidden');
+            resultBox.classList.add('flex');
+        }
+
+        // ==========================================
+        // PAGE 4: NAME TO HIT SONG GENERATOR
+        // ==========================================
+        const CURATED_SONGS = [
+            {
+                title: "Satu Bulan",
+                artist: "Bernadya",
+                tag: "HITS INDONESIA",
+                vibe: "Cocok buat kamu yang diam-diam sering nostalgia dan bakal kangen suasana kelas.",
+                c1: "#1E3A8A", c2: "#3B82F6", accent: "#DBEAFE", motif: "moon"
+            },
+            {
+                title: "Gala Bunga Matahari",
+                artist: "Sal Priadi",
+                tag: "POPULER & HANGAT",
+                vibe: "Namamu memancarkan kehangatan seperti bunga matahari yang selalu bikin teman sekitar nyaman.",
+                c1: "#78350F", c2: "#F59E0B", accent: "#FEF3C7", motif: "sun"
+            },
+            {
+                title: "Birds of a Feather",
+                artist: "Billie Eilish",
+                tag: "GLOBAL HIT",
+                vibe: "Persahabatan kita tuh kayak judul lagu ini—walau nanti pisah jalan, tetap saling dukung!",
+                c1: "#065F46", c2: "#10B981", accent: "#D1FAE5", motif: "birds"
+            },
+            {
+                title: "Tujuh Belas",
+                artist: "Tulus",
+                tag: "ANTHEM MASA SMA",
+                vibe: "Muda, seru, dan penuh cerita! Pas banget buat merayakan masa-masa putih abu-abu kita.",
+                c1: "#1D4ED8", c2: "#10B981", accent: "#FFFFFF", motif: "waves"
+            },
+            {
+                title: "Espresso",
+                artist: "Sabrina Carpenter",
+                tag: "VIRAL HIT",
+                vibe: "Energi namamu ceria, ikonik, dan selalu bikin suasana tongkrongan jadi hidup!",
+                c1: "#78350F", c2: "#D97706", accent: "#FEF3C7", motif: "cup"
+            },
+            {
+                title: "Evaluasi",
+                artist: "Hindia",
+                tag: "INDIE FAVORIT",
+                vibe: "Buat kamu yang kuat menghadapi tugas & ujian SMA, semoga langkahmu ke depan makin ringan.",
+                c1: "#0F172A", c2: "#3B82F6", accent: "#93C5FD", motif: "stars"
+            },
+            {
+                title: "Die With A Smile",
+                artist: "Lady Gaga & Bruno Mars",
+                tag: "CHART TOPPER",
+                vibe: "Vibes namamu klasik tapi berkelas, tipe teman yang selalu tulus kalau dimintain tolong.",
+                c1: "#1E40AF", c2: "#B45309", accent: "#FEF3C7", motif: "vinyl"
+            },
+            {
+                title: "Sialan",
+                artist: "Adrian Khalif & Juicy Luicy",
+                tag: "TOP INDONESIA",
+                vibe: "Asyik diajak cerita random di jam kosong dan punya selera humor yang susah dilupain.",
+                c1: "#047857", c2: "#2563EB", accent: "#D1FAE5", motif: "waves"
+            },
+            {
+                title: "High School in Jakarta",
+                artist: "NIKI",
+                tag: "NOSTALGIA SMA",
+                vibe: "Nama kamu identik banget sama drama seru, tawa, dan kenangan tak terlupakan di masa SMA.",
+                c1: "#92400E", c2: "#3B82F6", accent: "#DBEAFE", motif: "stars"
+            },
+            {
+                title: "Cruel Summer",
+                artist: "Taylor Swift",
+                tag: "POP ANTHEM",
+                vibe: "Selalu punya cerita seru setiap hari, bikin 3 tahun di sekolah terasa cepat banget!",
+                c1: "#2563EB", c2: "#10B981", accent: "#FEF3C7", motif: "sun"
+            }
+        ];
+
+        function handleSongSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('song-name-input');
+            const errorEl = document.getElementById('song-error');
+            const rawName = input.value.trim();
+
+            if (!rawName) {
+                errorEl.textContent = 'Masukkan namamu dulu ya untuk melihat lagunya!';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            errorEl.classList.add('hidden');
+            savedUserName = rawName;
+            generateSongCard(rawName);
+        }
+
+        function generateAlbumCoverSVG(song) {
+            let motifGraphic = '';
+            if (song.motif === 'sun') {
+                motifGraphic = `
+                    <circle cx="80" cy="80" r="32" fill="${song.accent}" opacity="0.9"/>
+                    <circle cx="80" cy="80" r="44" fill="none" stroke="${song.accent}" stroke-width="2" stroke-dasharray="6 6"/>
+                `;
+            } else if (song.motif === 'moon') {
+                motifGraphic = `
+                    <path d="M92 48 A34 34 0 1 0 112 104 A28 28 0 1 1 92 48 Z" fill="${song.accent}"/>
+                    <circle cx="110" cy="56" r="3" fill="#FFF"/>
+                    <circle cx="52" cy="108" r="2.5" fill="#FFF"/>
+                `;
+            } else if (song.motif === 'birds') {
+                motifGraphic = `
+                    <path d="M42 75 Q58 58 74 75 Q90 58 106 75" fill="none" stroke="${song.accent}" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M56 98 Q70 84 84 98 Q98 84 112 98" fill="none" stroke="#FFF" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+                `;
+            } else if (song.motif === 'waves') {
+                motifGraphic = `
+                    <path d="M20 70 Q50 45 80 70 T140 70" fill="none" stroke="${song.accent}" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M20 95 Q50 70 80 95 T140 95" fill="none" stroke="#FFF" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+                `;
+            } else {
+                motifGraphic = `
+                    <circle cx="80" cy="80" r="38" fill="none" stroke="${song.accent}" stroke-width="5"/>
+                    <circle cx="80" cy="80" r="18" fill="${song.accent}" opacity="0.85"/>
+                `;
+            }
+
+            return `
+                <svg viewBox="0 0 160 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="albGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="${song.c1}"/>
+                            <stop offset="100%" stop-color="${song.c2}"/>
+                        </linearGradient>
+                    </defs>
+                    <rect width="160" height="160" fill="url(#albGrad)"/>
+                    ${motifGraphic}
+                    <rect x="10" y="10" width="140" height="140" rx="8" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.35"/>
+                    <text x="16" y="142" font-family="Plus Jakarta Sans, sans-serif" font-size="9" font-weight="bold" fill="#FFFFFF" opacity="0.85" letter-spacing="1">SPECIAL EDITION</text>
+                </svg>
+            `;
+        }
+
+        function generateSongCard(name) {
+            const hash = hashString(name.toLowerCase().trim());
+            const song = CURATED_SONGS[hash % CURATED_SONGS.length];
+
+            document.getElementById('song-user-badge').textContent = `Untuk: ${name}`;
+            document.getElementById('album-cover-art').innerHTML = generateAlbumCoverSVG(song);
+            document.getElementById('song-year-tag').textContent = song.tag;
+            document.getElementById('song-title').textContent = song.title;
+            document.getElementById('song-artist').textContent = song.artist;
+            document.getElementById('song-vibe').textContent = `"${song.vibe}"`;
+
+            const resultBox = document.getElementById('song-result');
+            resultBox.classList.remove('hidden');
+            resultBox.classList.add('flex');
+        }
+
+        // ==========================================
+        // PAGE 5: FLOATING PETALS EFFECT
+        // ==========================================
+        function spawnFarewellPetals() {
+            const container = document.getElementById('petals-container');
+            container.innerHTML = '';
+            const colors = ['#3B82F6', '#10B981', '#FFFFFF', '#B45309', '#93C5FD', '#6EE7B7'];
+
+            for (let i = 0; i < 18; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal rounded-full';
+                const size = Math.floor(Math.random() * 10) + 8;
+                const left = Math.random() * 100;
+                const duration = (Math.random() * 5) + 6;
+                const delay = Math.random() * 4;
+                const color = colors[i % colors.length];
+
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size * 0.7}px`;
+                petal.style.left = `${left}vw`;
+                petal.style.backgroundColor = color;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
+                petal.style.boxShadow = '0 2px 6px rgba(0,0,0,0.08)';
+
+                container.appendChild(petal);
+            }
+        }
+    </script>
+</body>
+</html>
